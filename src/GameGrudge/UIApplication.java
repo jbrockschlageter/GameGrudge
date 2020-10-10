@@ -15,14 +15,12 @@ public class UIApplication extends Application {
 
         //add comment
 
-        String javaVersion = System.getProperty( "java.version" );
-        String javafxVersion = System.getProperty( "javafx.version" );
         Scene scene = new Scene( new StackPane(), 640, 480 );
         stage.setScene( scene );
         stage.show();
     }
 
     public static void main( String[] args ) {
-        launch();
+        Application.launch(UIApplication.class, args);
     }
 }
