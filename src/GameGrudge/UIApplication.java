@@ -1,26 +1,36 @@
 package GameGrudge;
+import GameGrudge.States.GameGrudgeState;
+import GameGrudge.States.State_TitleScreen;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import static javafx.application.Application.launch;
 
 public class UIApplication extends Application {
-    private GameGrudgeState currentState;
+    public GameGrudgeState currentState;
+    private Stage stage;
+
+    public void setCurrentState(GameGrudgeState currentState) {
+        this.currentState = currentState;
+    }
 
     @Override
     public void start( Stage stage ) {
+        this.stage = stage;
+        stage.setTitle("Game Grudge!");
+        currentState = new State_TitleScreen();
 
-        //add comment
+        setScene();
+    }
 
-        Scene scene = new Scene( new StackPane(), 640, 480 );
+    public void setScene(){
+        Scene scene = currentState.constructStage(this);
         stage.setScene( scene );
         stage.show();
     }
 
     public static void main( String[] args ) {
-        Application.launch(UIApplication.class, args);
+        launch(args);
     }
 }
