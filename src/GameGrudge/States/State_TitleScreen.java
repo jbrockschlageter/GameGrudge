@@ -18,29 +18,23 @@ import javafx.scene.text.Text;
 public class State_TitleScreen implements GameGrudgeState{
 
     public Scene constructStage(UIApplication app){
-
+        //Creating the scene
         Label l = new Label("Welcome to Game Grudge!");
 
         Button startButton = new Button("Start Game!");
         startButton.toFront();
-
         startButton.setOnAction(e -> {
             app.setCurrentState(new State_TeamFormation());
             app.setScene();
         });
 
-
-
         BorderPane sp = new BorderPane();
         sp.setMinSize(400,400);
         sp.setTop(l);
-
         sp.setCenter(startButton);
 
         Scene scene = new Scene(sp);
         return scene;
     }
-
-
 
 }

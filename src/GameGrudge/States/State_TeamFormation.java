@@ -8,10 +8,12 @@ import javafx.scene.layout.BorderPane;
 public class State_TeamFormation implements GameGrudgeState{
     @Override
     public Scene constructStage(UIApplication app) {
+        //Creating the scene
         Label l = new Label("TEAM FORMATION");
         BorderPane sp = new BorderPane(l);
         sp.setMinSize(400,400);
         Scene scene = new Scene(sp);
+
         return scene;
     }
 }
