@@ -11,6 +11,7 @@ public class State_TeamFormation implements GameGrudgeState{
     public Scene constructStage(UIApplication app) {
         //Creating the scene
         Label l = new Label("TEAM FORMATION");
+        //Add a label for buzz in buttons (team 1 = a ; team 2 = l)
 
         // ask how many players are on each team
 

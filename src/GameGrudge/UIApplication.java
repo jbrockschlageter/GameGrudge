@@ -32,6 +32,10 @@ public class UIApplication extends Application {
         stage.show();
     }
 
+    public void refreshStage(){
+        stage.show();
+    }
+
     public static void main( String[] args ) {
         launch(args);
     }
