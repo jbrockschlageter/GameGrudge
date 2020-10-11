@@ -10,6 +10,7 @@ import static javafx.application.Application.launch;
 public class UIApplication extends Application {
     public GameGrudgeState currentState;
     private Stage stage;
+    private GameModel gameModel;
 
     public void setCurrentState(GameGrudgeState currentState) {
         this.currentState = currentState;
@@ -17,6 +18,7 @@ public class UIApplication extends Application {
 
     @Override
     public void start( Stage stage ) {
+        gameModel = new GameModel();
         this.stage = stage;
         stage.setTitle("Game Grudge!");
         currentState = new State_TitleScreen();
