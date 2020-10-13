@@ -28,7 +28,7 @@ public class State_TitleScreen implements GameGrudgeState{
         //Creating start button. Setting this button to advance the state and to set the new scene
         Button startButton = new Button("Start Game!");
         startButton.setOnAction(e -> {
-            app.setCurrentState(new State_QuestionTossUp());
+            app.setCurrentState(new State_TeamFormation());
             //app.setCurrentState(new State_TeamFormation()); <- this is correct, just commenting out until team formation is done
             app.setScene();
         });
