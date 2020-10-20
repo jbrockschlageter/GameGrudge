@@ -21,6 +21,15 @@ public class State_TeamFormation implements GameGrudgeState{
         sp.setLeft(team1);
         sp.setRight(team2);
         sp.setCenter(numPlayers);
+
+        Button TEMPBUTTON = new Button("TEST BUTTON!");
+        TEMPBUTTON.setOnAction(e -> {
+            app.setCurrentState(new State_QuestionTossUp());
+            app.setScene();
+        });
+        sp.setTop(TEMPBUTTON);
+
+
         sp.setMinSize(400,400);
         // ask how many players are on each team
         //submitting answer to how many players will detemine how many text fields should appear on screen AFTER
