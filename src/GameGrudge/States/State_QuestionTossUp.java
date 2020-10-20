@@ -14,8 +14,8 @@ public class State_QuestionTossUp implements GameGrudgeState{
 
     @Override
     public Scene constructStage(UIApplication app) {
-
-        Label question = new Label("Question?");
+        app.gameModel.getQuestion();
+        Label question = new Label();
 
         VBox vb = new VBox(question);
         vb.setMinSize(400,400);

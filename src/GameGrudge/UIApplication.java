@@ -10,7 +10,7 @@ import static javafx.application.Application.launch;
 public class UIApplication extends Application {
     public GameGrudgeState currentState;
     private Stage stage;
-    private GameModel gameModel;
+    public GameModel gameModel;
 
     public void setCurrentState(GameGrudgeState currentState) {
         this.currentState = currentState;
