@@ -1,5 +1,6 @@
 package GameGrudge.States;
 
+import GameGrudge.Question;
 import GameGrudge.UIApplication;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,10 +13,12 @@ import javafx.scene.text.Text;
 
 public class State_QuestionTossUp implements GameGrudgeState{
 
+    Question question;
+
     @Override
     public Scene constructStage(UIApplication app) {
-        app.gameModel.getQuestion();
-        Label question = new Label();
+        question = app.gameModel.getQuestion();
+        Label question = new Label(this.question.question);
 
         VBox vb = new VBox(question);
         vb.setMinSize(400,400);

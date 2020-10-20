@@ -23,14 +23,6 @@ public class State_TeamFormation implements GameGrudgeState{
         sp.setRight(team2);
         sp.setCenter(numPlayers);
 
-        Button TEMPBUTTON = new Button("TEST BUTTON!");
-        TEMPBUTTON.setOnAction(e -> {
-            app.setCurrentState(new State_QuestionTossUp());
-            app.setScene();
-        });
-        sp.setTop(TEMPBUTTON);
-
-
         sp.setMinSize(400,400);
         // ask how many players are on each team
         //submitting answer to how many players will detemine how many text fields should appear on screen AFTER
@@ -67,7 +59,6 @@ public class State_TeamFormation implements GameGrudgeState{
     }
 
     public int populateField(UIApplication app, int numPlayers, VBox buttons) {
-        TextField answer = new TextField("How many players?");
         sp.getChildren().remove(buttons);
         if (numPlayers == 2) {
             app.gameModel.saveNames(2);
@@ -85,7 +76,10 @@ public class State_TeamFormation implements GameGrudgeState{
             app.gameModel.saveNames(5);
 
         }
-        return 0; //Succesful function
 
+        app.setCurrentState(new State_QuestionTossUp());
+        app.setScene();
+
+        return 0; //Succesful function
     }
 }
