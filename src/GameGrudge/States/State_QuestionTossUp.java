@@ -13,6 +13,9 @@ import javafx.scene.text.Text;
 
 public class State_QuestionTossUp implements GameGrudgeState{
 
+    //TODO: Seperate normal question functionality into it's own class,
+    // so that each question can be generated with a point changer to differentiate them
+
     Question question;
 
     @Override
@@ -52,6 +55,7 @@ public class State_QuestionTossUp implements GameGrudgeState{
 
     private Boolean submitAnswer(String answer){
         System.out.println("ANSWER SUBMITTED : " + answer);
+
         return false;
     }
 }

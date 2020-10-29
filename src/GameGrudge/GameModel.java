@@ -20,13 +20,23 @@ public class GameModel {
     }
 
     public Question getQuestion(){
-        Question question = new Question();
-        question.question = "What is a popular fruit?";
-        question.answers.add("Apple;80");
-        question.answers.add("Orange;10");
-        question.answers.add("Banana;5");
-        question.answers.add("Kiwi;3");
-        question.answers.add("Mango;2");
+        String questionString = "What is a good fruit?";
+        ArrayList<String> answers = new ArrayList<>();
+        ArrayList<Integer> pointValues = new ArrayList<>();
+        answers.add("Orange");
+        pointValues.add(50);
+        answers.add("Banana");
+        pointValues.add(25);
+        answers.add("Kiwi");
+        pointValues.add(15);
+        answers.add("Mango");
+        pointValues.add(6);
+        answers.add("Starfruit");
+        pointValues.add(4);
+
+        Question question = new Question(questionString, answers, pointValues);
+
+        System.out.println(question.answers.toString());
 
         return question;
         //if we have time, these will be pulled from a database.
