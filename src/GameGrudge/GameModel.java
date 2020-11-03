@@ -26,15 +26,15 @@ public class GameModel {
         String questionString = "What is a good fruit?";
         ArrayList<String> answers = new ArrayList<>();
         ArrayList<Integer> pointValues = new ArrayList<>();
-        answers.add("Orange");
+        answers.add("orange");
         pointValues.add(50);
-        answers.add("Banana");
+        answers.add("banana");
         pointValues.add(25);
-        answers.add("Kiwi");
+        answers.add("kiwi");
         pointValues.add(15);
-        answers.add("Mango");
+        answers.add("mango");
         pointValues.add(6);
-        answers.add("Starfruit");
+        answers.add("starfruit");
         pointValues.add(4);
 
         Question question = new Question(questionString, answers, pointValues);

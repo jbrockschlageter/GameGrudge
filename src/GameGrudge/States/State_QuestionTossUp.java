@@ -46,27 +46,56 @@ public class State_QuestionTossUp implements GameGrudgeState{
 
     private void teamAnswer(UIApplication app, VBox vb, Scene scene, Integer teamNumber){
         question.possessingTeam = teamNumber;
-        TextField answer = new TextField();
+        TextField answer = new TextField("team " + teamNumber);
         vb.getChildren().add(answer);
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER){
-                submitAnswer(answer.getCharacters().toString());
+                submitAnswer(answer.getCharacters().toString(), vb);
             }
         });
         app.refreshStage();
     }
 
-    private Boolean submitAnswer(String answer){
+    private void submitAnswer(String answer, VBox vb){
         System.out.println("ANSWER SUBMITTED : " + answer);
+        Label l;
+        if(validateAnswer(answer)){
+            l = new Label("Answer correct! Question is kept for team " + question.possessingTeam);
+        }
+        else{
+            if(question.possessingTeam == 1) {
+                l = new Label("Answer not found! Question passed to team " + 2);
+                question.possessingTeam = 2;
+            }
+            else {
+                l = new Label("Answer not found! Question passed to team " + 1);
+                question.possessingTeam = 1;
+            }
+        }
 
-        return false;
+        vb.getChildren().remove(vb.getChildren().size()-1);
+        vb.getChildren().add(l);
+
+        Button continueButton = new Button("Continue to Progress The Question");
+        continueButton.setOnAction(e -> {
+            app.setCurrentState(new State_SinglePointRound(question));
+            app.setScene();
+        });
+
+        vb.getChildren().add(continueButton);
+
+        app.refreshStage();
+
     }
 
     public boolean validateAnswer(String answer){
-        if(question.answers.containsKey(answer.toLowerCase())){
-            //app.gameModel.addPoints();
+        answer = answer.toLowerCase().trim();
+        if(question.answers.containsKey(answer)){
+            Integer pointValue = question.answers.get(answer).get(0);
+            app.gameModel.addPoints(question.possessingTeam, pointValue, 1);
+            question.answers.get(answer).set(1,1);
+            return true;
         }
-
         return false;
     }
 }
