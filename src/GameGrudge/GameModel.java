@@ -8,6 +8,9 @@ public class GameModel {
     public ArrayList<String> team1 = new ArrayList<>();
     public ArrayList<String> team2 = new ArrayList<>();
 
+    public Integer team1Points = 0;
+    public Integer team2Points = 0;
+
     public ArrayList<Question> questionSet;
 
     public void saveNames(int numberOfPlayers){
@@ -40,6 +43,15 @@ public class GameModel {
 
         return question;
         //if we have time, these will be pulled from a database.
+    }
+
+    public void addPoints(Integer teamNumber, Integer pointValue, Integer multiplier){
+        if(teamNumber == 1){
+            team1Points = team1Points + (pointValue * multiplier);
+        }
+        else if(teamNumber == 2){
+            team2Points = team2Points + (pointValue * multiplier);
+        }
     }
 
 }

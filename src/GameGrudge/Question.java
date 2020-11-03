@@ -6,11 +6,10 @@ import java.util.HashSet;
 
 // 5 answers only, for simplicity
 
-//TODO: Look into changing the 'answers' object type agian, because matching strings with point values is a no go. heck
-
 public class Question {
     public String question = "";
-    public ArrayList<HashMap<String, Boolean>> answers = new ArrayList<>();
+    public HashMap<String, ArrayList<Integer>> answers = new HashMap<>();
+    public Integer possessingTeam = 0;
 
     public Question(String question, ArrayList<String> answers, ArrayList<Integer> pointValues){
         createQuestion(question, answers, pointValues);
@@ -20,11 +19,13 @@ public class Question {
         this.question = question;
         int pointPlace = 0;
         for (String answer: answers) {
-            //answers are in format string (name and point value), boolean (answered already)
-            HashMap<String, Boolean> hash = new HashMap<>();
-            hash.put(answer + ";" + pointValues.get(pointPlace).toString(), false);
+            //answers are in format stringAnswer, list (point value, integer boolean "has been asked", true = 1)
 
-            this.answers.add(hash);
+            ArrayList<Integer> integerValues = new ArrayList<>();
+            integerValues.add(pointValues.get(pointPlace));
+            integerValues.add(0);
+
+            this.answers.put(answer,integerValues);
             pointPlace++;
         }
     }

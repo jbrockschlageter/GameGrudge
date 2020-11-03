@@ -17,9 +17,11 @@ public class State_QuestionTossUp implements GameGrudgeState{
     // so that each question can be generated with a point changer to differentiate them
 
     Question question;
+    UIApplication app;
 
     @Override
     public Scene constructStage(UIApplication app) {
+        this.app = app;
         question = app.gameModel.getQuestion();
         Label question = new Label(this.question.question);
 
@@ -43,6 +45,7 @@ public class State_QuestionTossUp implements GameGrudgeState{
     }
 
     private void teamAnswer(UIApplication app, VBox vb, Scene scene, Integer teamNumber){
+        question.possessingTeam = teamNumber;
         TextField answer = new TextField();
         vb.getChildren().add(answer);
         scene.setOnKeyPressed(e -> {
@@ -55,6 +58,14 @@ public class State_QuestionTossUp implements GameGrudgeState{
 
     private Boolean submitAnswer(String answer){
         System.out.println("ANSWER SUBMITTED : " + answer);
+
+        return false;
+    }
+
+    public boolean validateAnswer(String answer){
+        if(question.answers.containsKey(answer.toLowerCase())){
+            //app.gameModel.addPoints();
+        }
 
         return false;
     }
