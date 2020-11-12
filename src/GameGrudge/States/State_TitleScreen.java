@@ -4,6 +4,7 @@ import GameGrudge.UIApplication;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -39,14 +40,17 @@ public class State_TitleScreen implements GameGrudgeState{
             System.exit(0);
         });
 
-        //Adding the components to a VBox, to be in a vertical colomn
-        VBox vb = new VBox(l, startButton, quitButton);
-        vb.setSpacing(10);
-        BorderPane sp = new BorderPane(vb);
-        sp.setMinSize(400,400);
+        //Adding the components to a VBox, to be in a vertical column
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(l, startButton, quitButton);
+        vBox.setSpacing(10);
+        vBox.setAlignment(Pos.CENTER);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setMinSize(400,400);
+        borderPane.setCenter(vBox);
 
         //Creating the scene and adding the vbox collection. Sending it back to UIApp
-        Scene scene = new Scene(sp);
+        Scene scene = new Scene(borderPane);
         return scene;
     }
 
