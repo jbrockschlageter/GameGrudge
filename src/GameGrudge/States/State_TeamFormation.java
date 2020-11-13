@@ -1,6 +1,7 @@
 package GameGrudge.States;
 
 import GameGrudge.UIApplication;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,21 +10,22 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class State_TeamFormation implements GameGrudgeState{
-    public BorderPane sp;
+    public BorderPane borderPane;
+
+
     @Override
     public Scene constructStage(UIApplication app) {
         //Creating the scene
-        Label team1 = new Label("TEAM 1 = a");
-        Label team2 = new Label("TEAM 2 = l");
+        Label team1 = new Label("TEAM 1 = Stardust Crusaders");
+        Label team2 = new Label("TEAM 2 = Dream Team Purple Cobras");
         //Add a label for buzz in buttons (team 1 = a ; team 2 = l)
 
         Label numPlayers = new Label("How many players are on each team?");
-        sp = new BorderPane();
-        sp.setLeft(team1);
-        sp.setRight(team2);
-        sp.setCenter(numPlayers);
+        borderPane = new BorderPane();
+        borderPane.setLeft(team1);
+        borderPane.setRight(team2);
 
-        sp.setMinSize(400,400);
+        borderPane.setMinSize(400,400);
         // ask how many players are on each team
         //submitting answer to how many players will detemine how many text fields should appear on screen AFTER
 
@@ -45,21 +47,21 @@ public class State_TeamFormation implements GameGrudgeState{
         fivePlayers.setOnAction(e-> {
             populateField(app,5, buttons);
         });
-        buttons.getChildren().add(twoPlayers);
-        buttons.getChildren().add(threePlayers);
-        buttons.getChildren().add(fourPlayers);
-        buttons.getChildren().add(fivePlayers);
-        sp.setBottom(buttons);
+        buttons.getChildren().addAll(numPlayers,twoPlayers,threePlayers,
+                fourPlayers,fivePlayers);
+        buttons.setAlignment(Pos.CENTER);
+        buttons.setSpacing(10);
+        borderPane.setCenter(buttons);
         //After names are added, a button should be there like "Submit"
         //This button advances the app.CurrentState and saves the names to the UIApp's GameModel class.
 
-        Scene scene = new Scene(sp);
+        Scene scene = new Scene(borderPane);
 
         return scene;
     }
 
     public int populateField(UIApplication app, int numPlayers, VBox buttons) {
-        sp.getChildren().remove(buttons);
+        borderPane.getChildren().remove(buttons);
         if (numPlayers == 2) {
             app.gameModel.saveNames(2);
 

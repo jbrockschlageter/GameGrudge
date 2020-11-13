@@ -2,16 +2,19 @@ package GameGrudge.States;
 
 import GameGrudge.Question;
 import GameGrudge.UIApplication;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class State_QuestionTossUp implements GameGrudgeState{
+    public BorderPane borderPane;
 
     //TODO: Seperate normal question functionality into it's own class,
     // so that each question can be generated with a point changer to differentiate them
@@ -21,14 +24,17 @@ public class State_QuestionTossUp implements GameGrudgeState{
 
     @Override
     public Scene constructStage(UIApplication app) {
+        borderPane = new BorderPane();
         this.app = app;
         question = app.gameModel.getQuestion();
         Label question = new Label(this.question.question);
 
         VBox vb = new VBox(question);
+        vb.setAlignment(Pos.CENTER);
         vb.setMinSize(400,400);
+        borderPane.setCenter(vb);
 
-        Scene scene = new Scene(vb);
+        Scene scene = new Scene(borderPane);
 
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.A) {
