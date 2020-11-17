@@ -145,5 +145,7 @@ public class State_SinglePointRound implements GameGrudgeState{
 
         hb.getChildren().add(endingMessage);
         hb.getChildren().add(continueButton);
+
+        app.gameModel.questionSet.remove(question);
     }
 }

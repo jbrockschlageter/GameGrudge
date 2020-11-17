@@ -19,6 +19,7 @@ public class UIApplication extends Application {
     @Override
     public void start( Stage stage ) {
         gameModel = new GameModel();
+        gameModel.loadQuestions();
         this.stage = stage;
         stage.setTitle("Game Grudge!");
         currentState = new State_TitleScreen();
