@@ -9,16 +9,18 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 public class State_TitleScreen implements GameGrudgeState{
+    public Image background = new Image(getClass().getResourceAsStream("ggbackground.jpg"));
+    public Image blue = new Image(getClass().getResourceAsStream("buttonColor.png"));
+
 
     public Scene constructStage(UIApplication app){
         //Creating the scene
@@ -28,6 +30,7 @@ public class State_TitleScreen implements GameGrudgeState{
 
         //Creating start button. Setting this button to advance the state and to set the new scene
         Button startButton = new Button("Start Game!");
+        startButton.setGraphic(new ImageView(blue));
         startButton.setOnAction(e -> {
             app.setCurrentState(new State_TeamFormation());
             //app.setCurrentState(new State_TeamFormation()); <- this is correct, just commenting out until team formation is done
@@ -51,6 +54,8 @@ public class State_TitleScreen implements GameGrudgeState{
 
         //Creating the scene and adding the vbox collection. Sending it back to UIApp
         Scene scene = new Scene(borderPane);
+        //Background bg = new Background();
+        //borderPane.setBackground(bg);
         return scene;
     }
 
