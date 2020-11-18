@@ -1,5 +1,10 @@
 package GameGrudge;
 
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,6 +15,10 @@ public class Question {
     public String question = "";
     public HashMap<String, ArrayList<Integer>> answers = new HashMap<>();
     public Integer possessingTeam = 0;
+
+    Integer strikes = 0;
+    Integer numAnswersGotten = 0;
+    UIApplication app;
 
     public Question(String question, ArrayList<String> answers, ArrayList<Integer> pointValues){
         createQuestion(question, answers, pointValues);
@@ -28,6 +37,79 @@ public class Question {
             this.answers.put(answer,integerValues);
             pointPlace++;
         }
+    }
+
+    public boolean submitAnswer(String answer, VBox vb, HBox hb, boolean tossUpCase, UIApplication app){
+        this.app = app;
+        if(validateAnswer(answer, tossUpCase)){
+            boolean allAnswersFound = true;
+            for (String key : answers.keySet()) {
+                if(answers.get(key).get(1) != 1){
+                    allAnswersFound = false;
+                }
+            }
+
+            if(allAnswersFound){
+                endQuestion(true, vb, hb);
+            } else {
+                vb.getChildren().remove(numAnswersGotten + 1);
+                vb.getChildren().add(numAnswersGotten + 1, new Text(answer));
+                numAnswersGotten++;
+                app.refreshStage();
+                return true;
+            }
+        }
+        else{
+            strikes++;
+
+            if(strikes >= 3){
+                endQuestion(false, vb, hb);
+            } else {
+                hb.getChildren().remove(3);
+                hb.getChildren().add(3, new Text(this.strikes.toString()));
+                app.refreshStage();
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public boolean validateAnswer(String answer, boolean tossUpCase){
+        answer = answer.toLowerCase().trim();
+        if(answers.containsKey(answer)){
+            if(answers.get(answer).get(1) != 1 || tossUpCase) {
+                Integer pointValue = answers.get(answer).get(0);
+                app.gameModel.addPoints(possessingTeam, pointValue, 1);
+                answers.get(answer).set(1, 1);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void endQuestion(boolean didWin, VBox vb, HBox hb){
+        vb.getChildren().remove(1,vb.getChildren().size());
+
+        hb.getChildren().remove(0, hb.getChildren().size());
+        Text endingMessage = new Text();
+        Button continueButton = new Button("Click here to continue to next question");
+        if(didWin){
+            endingMessage = new Text("Congratulations! Team " + possessingTeam + " has guessed all the answers!");
+            continueButton.setOnAction(e -> {
+
+            });
+        }
+        else{
+            endingMessage = new Text("Oh no! Team " + possessingTeam + " has gotten three strikes!");
+            continueButton.setOnAction(e -> {
+
+            });
+        }
+
+        hb.getChildren().add(endingMessage);
+        hb.getChildren().add(continueButton);
+
+        app.gameModel.questionSet.remove(question);
     }
 
 }
