@@ -13,14 +13,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-import java.util.ArrayList;
-
 public class State_SinglePointRound implements GameGrudgeState{
 
     Question question;
     UIApplication app;
     Integer strikes = 0;
-    Integer numAnswersGotten = 0;
 
     //TODO: progress or switch teams accordingly.
 
@@ -36,10 +33,12 @@ public class State_SinglePointRound implements GameGrudgeState{
         vb.setMinSize(400,400);
 
         Label questionLabel = new Label(question.question);
+        Label teamLabel = new Label("Current team: team " + question.possessingTeam);
+        question.setMultiplier(2);
         TextField textField = new TextField();
         Text strikes = new Text(" stikes: ");
         Text numOfStrikes = new Text(this.strikes.toString());
-        HBox hbox = new HBox(questionLabel, textField, strikes, numOfStrikes);
+        HBox hbox = new HBox(questionLabel, teamLabel, textField, strikes, numOfStrikes);
 
         vb.getChildren().add(hbox);
 
@@ -75,6 +74,12 @@ public class State_SinglePointRound implements GameGrudgeState{
 
     public void importStates(Question q){
         question = q;
+        if (question.possessingTeam == 1){
+            question.setNextState(new State_DoublePointRound(2));
+        }
+        else{
+            question.setNextState(new State_DoublePointRound(1));
+        }
     }
 
 }

@@ -1,5 +1,7 @@
 package GameGrudge;
 
+import GameGrudge.States.GameGrudgeState;
+import GameGrudge.States.State_SinglePointRound;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -19,6 +21,8 @@ public class Question {
     Integer strikes = 0;
     Integer numAnswersGotten = 0;
     UIApplication app;
+    GameGrudgeState nextState;
+    Integer multiplier;
 
     public Question(String question, ArrayList<String> answers, ArrayList<Integer> pointValues){
         createQuestion(question, answers, pointValues);
@@ -65,8 +69,8 @@ public class Question {
             if(strikes >= 3){
                 endQuestion(false, vb, hb);
             } else {
-                hb.getChildren().remove(3);
-                hb.getChildren().add(3, new Text(this.strikes.toString()));
+                hb.getChildren().remove(4);
+                hb.getChildren().add(4, new Text(this.strikes.toString()));
                 app.refreshStage();
                 return false;
             }
@@ -79,7 +83,7 @@ public class Question {
         if(answers.containsKey(answer)){
             if(answers.get(answer).get(1) != 1 || tossUpCase) {
                 Integer pointValue = answers.get(answer).get(0);
-                app.gameModel.addPoints(possessingTeam, pointValue, 1);
+                app.gameModel.addPoints(possessingTeam, pointValue, multiplier);
                 answers.get(answer).set(1, 1);
                 return true;
             }
@@ -94,22 +98,34 @@ public class Question {
         Text endingMessage = new Text();
         Button continueButton = new Button("Click here to continue to next question");
         if(didWin){
-            endingMessage = new Text("Congratulations! Team " + possessingTeam + " has guessed all the answers!");
+            endingMessage = new Text("Congratulations! Team " + possessingTeam + " has guessed all the answers! Teams will switch for the next question");
             continueButton.setOnAction(e -> {
-
+                //TODO: Add switching to the other team if time allows. For now, it will progress to the next question.
+                app.setCurrentState(nextState);
+                app.setScene();
             });
         }
         else{
-            endingMessage = new Text("Oh no! Team " + possessingTeam + " has gotten three strikes!");
+            endingMessage = new Text("Oh no! Team " + possessingTeam + " has gotten three strikes! Teams will switch for the next question");
             continueButton.setOnAction(e -> {
-
+                //TODO: see above
+                app.setCurrentState(nextState);
+                app.setScene();
             });
         }
 
         hb.getChildren().add(endingMessage);
         hb.getChildren().add(continueButton);
 
-        app.gameModel.questionSet.remove(question);
+        app.gameModel.questionSet.remove(this);
+    }
+
+    public void setNextState(GameGrudgeState state){
+        nextState = state;
+    }
+
+    public void setMultiplier(Integer i){
+        multiplier = i;
     }
 
 }

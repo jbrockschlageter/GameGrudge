@@ -16,9 +16,6 @@ import javafx.scene.text.Text;
 public class State_QuestionTossUp implements GameGrudgeState{
     public BorderPane borderPane;
 
-    //TODO: Seperate normal question functionality into it's own class,
-    // so that each question can be generated with a point changer to differentiate them
-
     Question question;
     UIApplication app;
 
