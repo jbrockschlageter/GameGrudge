@@ -1,6 +1,6 @@
-package GameGrudge;
-import GameGrudge.States.GameGrudgeState;
-import GameGrudge.States.State_TitleScreen;
+package GangGrudge;
+import GangGrudge.States.GangGrudgeState;
+import GangGrudge.States.State_TitleScreen;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -8,11 +8,11 @@ import javafx.stage.Stage;
 import static javafx.application.Application.launch;
 
 public class UIApplication extends Application {
-    public GameGrudgeState currentState;
+    public GangGrudgeState currentState;
     private Stage stage;
     public GameModel gameModel;
 
-    public void setCurrentState(GameGrudgeState currentState) {
+    public void setCurrentState(GangGrudgeState currentState) {
         this.currentState = currentState;
     }
 

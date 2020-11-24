@@ -1,4 +1,4 @@
-package GameGrudge;
+package GangGrudge;
 
 import java.util.ArrayList;
 import java.util.Random;

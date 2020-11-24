@@ -1,6 +1,6 @@
-package GameGrudge.States;
+package GangGrudge.States;
 
-import GameGrudge.UIApplication;
+import GangGrudge.UIApplication;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class State_MainGameTally implements GameGrudgeState {
+public class State_MainGangTally implements GangGrudgeState {
 
     UIApplication app;
 
@@ -42,7 +42,7 @@ public class State_MainGameTally implements GameGrudgeState {
 
         Button continueButton = new Button("Press to Continue");
         continueButton.setOnAction(e -> {
-            app.setCurrentState(new State_EndGame());
+            app.setCurrentState(new State_EndGang());
             app.setScene();
         });
         vb.getChildren().add(continueButton);

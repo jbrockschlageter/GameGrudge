@@ -1,23 +1,15 @@
-package GameGrudge.States;
+package GangGrudge.States;
 
-import GameGrudge.UIApplication;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import GangGrudge.UIApplication;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 
-public class State_TitleScreen implements GameGrudgeState{
+public class State_TitleScreen implements GangGrudgeState {
     public Image background = new Image(getClass().getResourceAsStream("ggbackground.jpg"));
     public Image blue = new Image(getClass().getResourceAsStream("buttonColor.png"));
 
@@ -26,7 +18,7 @@ public class State_TitleScreen implements GameGrudgeState{
         //Creating the scene
 
         //Creating label for scene
-        Label l = new Label("Welcome to Game Grudge!");
+        Label l = new Label("Welcome to Gang Grudge!");
 
         //Creating start button. Setting this button to advance the state and to set the new scene
         Button startButton = new Button("Start Game!");

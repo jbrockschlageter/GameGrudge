@@ -1,7 +1,7 @@
-package GameGrudge.States;
+package GangGrudge.States;
 
-import GameGrudge.Question;
-import GameGrudge.UIApplication;
+import GangGrudge.Question;
+import GangGrudge.UIApplication;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 
-public class State_QuestionTossUp implements GameGrudgeState{
+public class State_QuestionTossUp implements GangGrudgeState {
     public BorderPane borderPane;
 
     Question question;

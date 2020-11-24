@@ -1,7 +1,7 @@
-package GameGrudge.States;
+package GangGrudge.States;
 
-import GameGrudge.Question;
-import GameGrudge.UIApplication;
+import GangGrudge.Question;
+import GangGrudge.UIApplication;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class State_DoublePointRound implements GameGrudgeState{
+public class State_DoublePointRound implements GangGrudgeState {
 
     Question question;
     UIApplication app;

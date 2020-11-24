@@ -1,6 +1,6 @@
-package GameGrudge;
+package GangGrudge;
 
-import GameGrudge.States.GameGrudgeState;
+import GangGrudge.States.GangGrudgeState;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -18,7 +18,7 @@ public class Question {
     Integer strikes = 0;
     Integer numAnswersGotten = 0;
     UIApplication app;
-    GameGrudgeState nextState;
+    GangGrudgeState nextState;
     Integer multiplier;
 
     public Question(String question, ArrayList<String> answers, ArrayList<Integer> pointValues){
@@ -117,7 +117,7 @@ public class Question {
         app.gameModel.questionSet.remove(this);
     }
 
-    public void setNextState(GameGrudgeState state){
+    public void setNextState(GangGrudgeState state){
         nextState = state;
     }
 

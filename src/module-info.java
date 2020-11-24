@@ -1,4 +1,4 @@
-module GameGrudge {
+module GangGrudge {
     requires transitive javafx.controls;
-    exports GameGrudge;
+    exports GangGrudge;
 }
