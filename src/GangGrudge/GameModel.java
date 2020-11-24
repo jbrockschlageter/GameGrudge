@@ -42,8 +42,6 @@ public class GameModel {
 
         Question question1 = new Question(questionString, answers, pointValues);
 
-        System.out.println(question1.answers.toString());
-
         questionSet.add(question1);
 
         questionString = "Name something you fill with air.";
@@ -61,8 +59,6 @@ public class GameModel {
         pointValues.add(4);
 
         Question question2 = new Question(questionString, answers, pointValues);
-
-        System.out.println(question2.answers.toString());
 
         questionSet.add(question2);
 
@@ -82,8 +78,6 @@ public class GameModel {
 
         Question question3 = new Question(questionString, answers, pointValues);
 
-        System.out.println(question3.answers.toString());
-
         questionSet.add(question3);
 
         questionString = "Name something you smell before you buy it";
@@ -102,8 +96,6 @@ public class GameModel {
 
         Question question4 = new Question(questionString, answers, pointValues);
 
-        System.out.println(question4.answers.toString());
-
         questionSet.add(question4);
 
         questionString = "Name something a programmer hates";
@@ -121,8 +113,6 @@ public class GameModel {
         pointValues.add(4);
 
         Question question5 = new Question(questionString, answers, pointValues);
-
-        System.out.println(question5.answers.toString());
 
         questionSet.add(question5);
     }

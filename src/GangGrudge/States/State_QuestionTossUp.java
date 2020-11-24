@@ -59,7 +59,6 @@ public class State_QuestionTossUp implements GangGrudgeState {
     }
 
     private void submitAnswer(String answer, VBox vb){
-        System.out.println("ANSWER SUBMITTED : " + answer);
         Label l;
         if(validateAnswer(answer)){
             l = new Label("Answer correct! Question is kept for team " + question.possessingTeam);
