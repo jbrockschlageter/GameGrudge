@@ -62,22 +62,6 @@ public class State_TeamFormation implements GameGrudgeState{
 
     public int populateField(UIApplication app, int numPlayers, VBox buttons) {
         borderPane.getChildren().remove(buttons);
-        if (numPlayers == 2) {
-            app.gameModel.saveNames(2);
-
-        }
-        else if (numPlayers == 3) {
-            app.gameModel.saveNames(3);
-
-        }
-        else if (numPlayers == 4) {
-            app.gameModel.saveNames(4);
-
-        }
-        else {
-            app.gameModel.saveNames(5);
-
-        }
 
         app.setCurrentState(new State_QuestionTossUp());
         app.setScene();

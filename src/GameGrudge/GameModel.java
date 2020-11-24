@@ -6,22 +6,10 @@ import java.util.Random;
 public class GameModel {
     //This class holds the model info for the UI Application
 
-    public ArrayList<String> team1 = new ArrayList<>();
-    public ArrayList<String> team2 = new ArrayList<>();
-
     public Integer team1Points = 0;
     public Integer team2Points = 0;
 
     public ArrayList<Question> questionSet = new ArrayList<Question>();
-
-    public void saveNames(int numberOfPlayers){
-        team1.add("Team 1");
-        team2.add("Team 2");
-        for(int i = 1 ; i <= numberOfPlayers; i++){
-            team1.add("Player " + i);
-            team2.add("Player " + i);
-        }
-    }
 
     public Question getQuestion(){
         Random rand = new Random();
@@ -137,6 +125,13 @@ public class GameModel {
         System.out.println(question5.answers.toString());
 
         questionSet.add(question5);
+    }
+
+    public void clearData(){
+        team1Points = 0;
+        team2Points = 0;
+        questionSet = new ArrayList<>();
+        loadQuestions();
     }
 
 }

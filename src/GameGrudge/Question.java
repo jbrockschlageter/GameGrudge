@@ -1,15 +1,12 @@
 package GameGrudge;
 
 import GameGrudge.States.GameGrudgeState;
-import GameGrudge.States.State_SinglePointRound;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 // 5 answers only, for simplicity
 
