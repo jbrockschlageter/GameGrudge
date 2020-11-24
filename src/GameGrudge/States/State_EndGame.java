@@ -17,6 +17,7 @@ public class State_EndGame implements GameGrudgeState {
         this.app = app;
 
         BorderPane bp = new BorderPane();
+        bp.setMinSize(700,700);
 
         VBox vb = new VBox();
         vb.getChildren().add(new Label("Winner! Congratulations"));
@@ -37,9 +38,11 @@ public class State_EndGame implements GameGrudgeState {
             app.setScene();
         });
         vb.getChildren().add(continueButton);
+        vb.setSpacing(20);
+        bp.setCenter(vb);
 
 
-        Scene scene = new Scene(vb);
+        Scene scene = new Scene(bp);
 
         return scene;
     }

@@ -25,11 +25,8 @@ public class State_TeamFormation implements GameGrudgeState{
         borderPane.setLeft(team1);
         borderPane.setRight(team2);
 
-        borderPane.setMinSize(400,400);
-        // ask how many players are on each team
-        //submitting answer to how many players will detemine how many text fields should appear on screen AFTER
+        borderPane.setMinSize(700,700);
 
-        // maybe something like HowManyPlayersButton triggers visibility on the text fields or something. check the javadocs im not entirely sure
         VBox buttons = new VBox();
         Button twoPlayers = new Button("Two");
         twoPlayers.setOnAction(e-> {

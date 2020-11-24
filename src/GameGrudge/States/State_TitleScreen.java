@@ -49,7 +49,7 @@ public class State_TitleScreen implements GameGrudgeState{
         vBox.setSpacing(10);
         vBox.setAlignment(Pos.CENTER);
         BorderPane borderPane = new BorderPane();
-        borderPane.setMinSize(400,400);
+        borderPane.setMinSize(700,700);
         borderPane.setCenter(vBox);
 
         //Creating the scene and adding the vbox collection. Sending it back to UIApp

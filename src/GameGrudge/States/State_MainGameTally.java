@@ -20,7 +20,7 @@ public class State_MainGameTally implements GameGrudgeState {
         BorderPane bp = new BorderPane();
 
         HBox hb = new HBox();
-        bp.setMinSize(400,400);
+        bp.setMinSize(700,700);
 
         VBox team1Box = new VBox();
         VBox team2Box = new VBox();
@@ -34,6 +34,8 @@ public class State_MainGameTally implements GameGrudgeState {
         hb.getChildren().add(team1Box);
         hb.getChildren().add(team2Box);
 
+        hb.setSpacing(20);
+
         VBox vb = new VBox();
         vb.getChildren().add(new Label("Score Breakdown!"));
         vb.getChildren().add(hb);
@@ -44,6 +46,8 @@ public class State_MainGameTally implements GameGrudgeState {
             app.setScene();
         });
         vb.getChildren().add(continueButton);
+
+        vb.setSpacing(20);
         
         bp.setCenter(vb);
 

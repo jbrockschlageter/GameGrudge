@@ -9,9 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+
 
 public class State_QuestionTossUp implements GameGrudgeState{
     public BorderPane borderPane;
@@ -28,7 +27,7 @@ public class State_QuestionTossUp implements GameGrudgeState{
 
         VBox vb = new VBox(question);
         vb.setAlignment(Pos.CENTER);
-        vb.setMinSize(400,400);
+        vb.setMinSize(700,700);
         borderPane.setCenter(vb);
 
         Scene scene = new Scene(borderPane);

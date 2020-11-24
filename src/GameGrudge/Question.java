@@ -66,8 +66,8 @@ public class Question {
             if(strikes >= 3){
                 endQuestion(false, vb, hb);
             } else {
-                hb.getChildren().remove(4);
-                hb.getChildren().add(4, new Text(this.strikes.toString()));
+                hb.getChildren().remove(3);
+                hb.getChildren().add(3, new Text(this.strikes.toString()));
                 app.refreshStage();
                 return false;
             }

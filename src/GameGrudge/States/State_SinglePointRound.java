@@ -30,7 +30,7 @@ public class State_SinglePointRound implements GameGrudgeState{
         this.app = app;
 
         VBox vb = new VBox();
-        vb.setMinSize(400,400);
+        vb.setMinSize(700,700);
 
         Label questionLabel = new Label(question.question);
         Label teamLabel = new Label("Current team: team " + question.possessingTeam);
@@ -38,7 +38,11 @@ public class State_SinglePointRound implements GameGrudgeState{
         TextField textField = new TextField();
         Text strikes = new Text(" stikes: ");
         Text numOfStrikes = new Text(this.strikes.toString());
-        HBox hbox = new HBox(questionLabel, teamLabel, textField, strikes, numOfStrikes);
+        VBox leftSide = new VBox();
+        leftSide.getChildren().add(questionLabel);
+        leftSide.getChildren().add(teamLabel);
+        HBox hbox = new HBox(leftSide, textField, strikes, numOfStrikes);
+        hbox.setSpacing(20);
 
         vb.getChildren().add(hbox);
 

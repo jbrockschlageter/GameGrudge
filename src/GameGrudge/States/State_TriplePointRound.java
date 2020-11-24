@@ -28,7 +28,7 @@ public class State_TriplePointRound implements GameGrudgeState {
         this.app = app;
 
         VBox vb = new VBox();
-        vb.setMinSize(400,400);
+        vb.setMinSize(700,700);
 
         question = app.gameModel.getQuestion();
         question.possessingTeam = this.possessingTeam;
@@ -40,7 +40,11 @@ public class State_TriplePointRound implements GameGrudgeState {
         TextField textField = new TextField();
         Text strikes = new Text(" stikes: ");
         Text numOfStrikes = new Text(this.strikes.toString());
-        HBox hbox = new HBox(questionLabel, teamLabel, textField, strikes, numOfStrikes);
+        VBox leftSide = new VBox();
+        leftSide.getChildren().add(questionLabel);
+        leftSide.getChildren().add(teamLabel);
+        HBox hbox = new HBox(leftSide, textField, strikes, numOfStrikes);
+        hbox.setSpacing(20);
 
         vb.getChildren().add(hbox);
 
