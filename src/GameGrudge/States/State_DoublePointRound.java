@@ -33,6 +33,7 @@ public class State_DoublePointRound implements GameGrudgeState{
         question = app.gameModel.getQuestion();
         question.possessingTeam = this.possessingTeam;
         question.setMultiplier(2);
+        importStates();
 
         Label questionLabel = new Label(question.question);
         Label teamLabel = new Label("Current team: team " + question.possessingTeam);
@@ -71,5 +72,14 @@ public class State_DoublePointRound implements GameGrudgeState{
         });
 
         return scene;
+    }
+
+    public void importStates(){
+        if (question.possessingTeam == 1){
+            question.setNextState(new State_TriplePointRound(2));
+        }
+        else{
+            question.setNextState(new State_TriplePointRound(1));
+        }
     }
 }
