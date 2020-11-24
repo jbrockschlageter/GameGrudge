@@ -10,9 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 public class State_TitleScreen implements GangGrudgeState {
-    public Image background = new Image(getClass().getResourceAsStream("ggbackground.jpg"));
-    public Image blue = new Image(getClass().getResourceAsStream("buttonColor.png"));
-
 
     public Scene constructStage(UIApplication app){
         //Creating the scene
@@ -22,10 +19,8 @@ public class State_TitleScreen implements GangGrudgeState {
 
         //Creating start button. Setting this button to advance the state and to set the new scene
         Button startButton = new Button("Start Game!");
-        startButton.setGraphic(new ImageView(blue));
         startButton.setOnAction(e -> {
             app.setCurrentState(new State_TeamFormation());
-            //app.setCurrentState(new State_TeamFormation()); <- this is correct, just commenting out until team formation is done
             app.setScene();
         });
 
@@ -46,8 +41,6 @@ public class State_TitleScreen implements GangGrudgeState {
 
         //Creating the scene and adding the vbox collection. Sending it back to UIApp
         Scene scene = new Scene(borderPane);
-        //Background bg = new Background();
-        //borderPane.setBackground(bg);
         return scene;
     }
 

@@ -48,8 +48,6 @@ public class State_TeamFormation implements GangGrudgeState {
         buttons.setAlignment(Pos.CENTER);
         buttons.setSpacing(10);
         borderPane.setCenter(buttons);
-        //After names are added, a button should be there like "Submit"
-        //This button advances the app.CurrentState and saves the names to the UIApp's GameModel class.
 
         Scene scene = new Scene(borderPane);
 
@@ -62,6 +60,6 @@ public class State_TeamFormation implements GangGrudgeState {
         app.setCurrentState(new State_QuestionTossUp());
         app.setScene();
 
-        return 0; //Succesful function
+        return 0;
     }
 }
